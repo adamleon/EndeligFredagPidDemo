@@ -1,0 +1,52 @@
+name: Run PID Simulation and Update Overleaf Repo
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action on pushes to the main branch
+
+jobs:
+  run-simulation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # Use any Python 3 version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Add any additional dependencies here if needed
+
+    - name: Run PID simulation
+      run: |
+        python pid_simulation.py
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Clone Overleaf repo
+      run: |
+        git clone https://$GITHUB_ACTOR:$OVERLEAF_TOKEN@github.com/adamleon/Endelig-Fredag-Based.git Endelig-Fredag-Based
+      env:
+        OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
+
+    - name: Copy CSV files to Overleaf repo
+      run: |
+        cp pid_output.csv pid_parameters.csv Endelig-Fredag-Based/data
+        
+    - name: Commit and push to Overleaf repo
+      run: |
+        cd Endelig-Fredag-Based
+        git add data/pid_output.csv data/pid_parameters.csv
+        git commit -m "Update PID simulation results"
+        git push
+      env:
+        OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
