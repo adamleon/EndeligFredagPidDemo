@@ -15,7 +15,7 @@ def export_pid_parameters(Kp, Ki, Kd, setpoint):
 
 def run_pid_simulation():
     # PID parameters
-    Kp = 1.0
+    Kp = 3.0
     Ki = 0.3
     Kd = 0.05
     setpoint = 20
