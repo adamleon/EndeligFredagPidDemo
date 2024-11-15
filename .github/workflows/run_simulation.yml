@@ -41,12 +41,12 @@ jobs:
     - name: Copy CSV files to Overleaf repo
       run: |
         cp pid_output.csv pid_parameters.csv Endelig-Fredag-Based/data
-        cp pid_parameters.py Endelig-Fredag-Based/code
+        cp pid_controller.py Endelig-Fredag-Based/code
         
     - name: Commit and push to Overleaf repo
       run: |
         cd Endelig-Fredag-Based
-        git add data/pid_output.csv data/pid_parameters.csv code/pid_parameters.py
+        git add data/pid_output.csv data/pid_parameters.csv code/pid_controller.py
         git commit -m "Update PID simulation results"
         git push
       env:
