@@ -1,5 +1,4 @@
 # pid_controller.py
-# testing what happens when I add a comment to the file
 
 class PIDController:
     def __init__(self, Kp, Ki, Kd, setpoint=0):
