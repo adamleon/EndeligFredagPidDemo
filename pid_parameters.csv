@@ -1,0 +1,5 @@
+Parameter,Value
+Kp,1.0
+Ki,0.1
+Kd,0.05
+Setpoint,10
