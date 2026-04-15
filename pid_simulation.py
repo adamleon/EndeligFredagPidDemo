@@ -15,10 +15,10 @@ def export_pid_parameters(Kp, Ki, Kd, setpoint):
 
 def run_pid_simulation():
     # PID parameters
-    Kp = 3.0
+    Kp = 5.0
     Ki = 0.3
     Kd = 0.05
-    setpoint = 20
+    setpoint = 10
 
     # Export PID parameters to a separate CSV file
     export_pid_parameters(Kp, Ki, Kd, setpoint)
