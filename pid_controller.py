@@ -2,7 +2,7 @@
 
 class PIDController: # This is a test
     def __init__(self, Kp, Ki, Kd, setpoint=0):
-        """Initialize PID controller with given gains and setpoint."""
+        """Initialize PID controller something with given gains and setpoint."""
         self.Kp = Kp  # Proportional gain
         self.Ki = Ki  # Integral gain
         self.Kd = Kd  # Derivative gain
